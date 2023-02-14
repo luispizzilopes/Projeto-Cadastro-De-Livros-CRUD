@@ -1,2 +1,2 @@
-# Projeto-Cadastro-De-Livros-CRUD
+# Projeto Cadastro de Livros (CRUD)
 Em desenvolvimento
