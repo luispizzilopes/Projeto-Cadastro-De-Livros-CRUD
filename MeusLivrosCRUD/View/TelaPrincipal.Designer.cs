@@ -34,19 +34,19 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxBuscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBoxNomelivro = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtBoxData = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtBoxNomeAutor = new System.Windows.Forms.TextBox();
+            this.txtBoxEditora = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.txtBoxDataCadastro = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtBoxObs = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnNovo
@@ -57,6 +57,7 @@
             this.btnNovo.TabIndex = 0;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnAdicionar
             // 
@@ -66,6 +67,7 @@
             this.btnAdicionar.TabIndex = 1;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // btnBuscar
             // 
@@ -103,13 +105,12 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Pesquisar nome do livro:";
             // 
-            // textBox1
+            // txtBoxBuscar
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(228, 93);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(414, 26);
-            this.textBox1.TabIndex = 6;
+            this.txtBoxBuscar.Location = new System.Drawing.Point(228, 93);
+            this.txtBoxBuscar.Name = "txtBoxBuscar";
+            this.txtBoxBuscar.Size = new System.Drawing.Size(414, 26);
+            this.txtBoxBuscar.TabIndex = 6;
             // 
             // label2
             // 
@@ -120,13 +121,13 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Nome do livro:";
             // 
-            // textBox2
+            // txtBoxNomelivro
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(158, 137);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(483, 26);
-            this.textBox2.TabIndex = 8;
+            this.txtBoxNomelivro.Enabled = false;
+            this.txtBoxNomelivro.Location = new System.Drawing.Point(158, 137);
+            this.txtBoxNomelivro.Name = "txtBoxNomelivro";
+            this.txtBoxNomelivro.Size = new System.Drawing.Size(483, 26);
+            this.txtBoxNomelivro.TabIndex = 8;
             // 
             // label3
             // 
@@ -137,15 +138,15 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Data lançamento:";
             // 
-            // maskedTextBox1
+            // txtBoxData
             // 
-            this.maskedTextBox1.Enabled = false;
-            this.maskedTextBox1.Location = new System.Drawing.Point(172, 182);
-            this.maskedTextBox1.Mask = "00/00/0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(140, 26);
-            this.maskedTextBox1.TabIndex = 10;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.txtBoxData.Enabled = false;
+            this.txtBoxData.Location = new System.Drawing.Point(172, 182);
+            this.txtBoxData.Mask = "00/00/0000";
+            this.txtBoxData.Name = "txtBoxData";
+            this.txtBoxData.Size = new System.Drawing.Size(140, 26);
+            this.txtBoxData.TabIndex = 10;
+            this.txtBoxData.ValidatingType = typeof(System.DateTime);
             // 
             // label4
             // 
@@ -156,21 +157,21 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Nome autor:";
             // 
-            // textBox3
+            // txtBoxNomeAutor
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(430, 182);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(211, 26);
-            this.textBox3.TabIndex = 12;
+            this.txtBoxNomeAutor.Enabled = false;
+            this.txtBoxNomeAutor.Location = new System.Drawing.Point(430, 182);
+            this.txtBoxNomeAutor.Name = "txtBoxNomeAutor";
+            this.txtBoxNomeAutor.Size = new System.Drawing.Size(211, 26);
+            this.txtBoxNomeAutor.TabIndex = 12;
             // 
-            // textBox4
+            // txtBoxEditora
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(104, 227);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(260, 26);
-            this.textBox4.TabIndex = 13;
+            this.txtBoxEditora.Enabled = false;
+            this.txtBoxEditora.Location = new System.Drawing.Point(104, 227);
+            this.txtBoxEditora.Name = "txtBoxEditora";
+            this.txtBoxEditora.Size = new System.Drawing.Size(260, 26);
+            this.txtBoxEditora.TabIndex = 13;
             // 
             // label5
             // 
@@ -190,15 +191,15 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "Data cadastro: ";
             // 
-            // maskedTextBox2
+            // txtBoxDataCadastro
             // 
-            this.maskedTextBox2.Enabled = false;
-            this.maskedTextBox2.Location = new System.Drawing.Point(501, 227);
-            this.maskedTextBox2.Mask = "00/00/0000";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(140, 26);
-            this.maskedTextBox2.TabIndex = 16;
-            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            this.txtBoxDataCadastro.Enabled = false;
+            this.txtBoxDataCadastro.Location = new System.Drawing.Point(501, 227);
+            this.txtBoxDataCadastro.Mask = "00/00/0000";
+            this.txtBoxDataCadastro.Name = "txtBoxDataCadastro";
+            this.txtBoxDataCadastro.Size = new System.Drawing.Size(140, 26);
+            this.txtBoxDataCadastro.TabIndex = 16;
+            this.txtBoxDataCadastro.ValidatingType = typeof(System.DateTime);
             // 
             // label7
             // 
@@ -209,33 +210,33 @@
             this.label7.TabIndex = 17;
             this.label7.Text = "Observação:";
             // 
-            // textBox5
+            // txtBoxObs
             // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(30, 297);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(612, 115);
-            this.textBox5.TabIndex = 18;
+            this.txtBoxObs.Enabled = false;
+            this.txtBoxObs.Location = new System.Drawing.Point(30, 297);
+            this.txtBoxObs.Multiline = true;
+            this.txtBoxObs.Name = "txtBoxObs";
+            this.txtBoxObs.Size = new System.Drawing.Size(612, 115);
+            this.txtBoxObs.TabIndex = 18;
             // 
             // TelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(672, 437);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtBoxObs);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.maskedTextBox2);
+            this.Controls.Add(this.txtBoxDataCadastro);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtBoxEditora);
+            this.Controls.Add(this.txtBoxNomeAutor);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.txtBoxData);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtBoxNomelivro);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBoxBuscar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnEditar);
@@ -259,18 +260,18 @@
         private Button btnEditar;
         private Button btnExcluir;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox txtBoxBuscar;
         private Label label2;
-        private TextBox textBox2;
+        private TextBox txtBoxNomelivro;
         private Label label3;
-        private MaskedTextBox maskedTextBox1;
+        private MaskedTextBox txtBoxData;
         private Label label4;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private TextBox txtBoxNomeAutor;
+        private TextBox txtBoxEditora;
         private Label label5;
         private Label label6;
-        private MaskedTextBox maskedTextBox2;
+        private MaskedTextBox txtBoxDataCadastro;
         private Label label7;
-        private TextBox textBox5;
+        private TextBox txtBoxObs;
     }
 }
