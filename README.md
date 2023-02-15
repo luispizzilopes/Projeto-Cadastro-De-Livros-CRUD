@@ -13,7 +13,7 @@ Esse é um simples projeto para Desktop desenvolvido na linguagem C# utilizando 
 # Imagem do projeto
 
 Tela de Login:
-!![image](https://user-images.githubusercontent.com/101680647/219118072-21d79f42-e7ff-4e8b-9b65-9e23da4fa65b.png)
+![image](https://user-images.githubusercontent.com/101680647/219118072-21d79f42-e7ff-4e8b-9b65-9e23da4fa65b.png)
 
 Tela Principal:
 
@@ -38,7 +38,9 @@ edite a última parte do comando "Data Source=Nome do seu servidor local" e salv
 
 6- (Opcional) Faça a instalação das fontes na pasta do projeto no Windows.
 
-6-Pronto! Abra o arquivo .exe na pasta bin do projeto ou debug o projeto pelo Visual Studio.
+7- Pronto! Abra o arquivo .exe na pasta bin do projeto ou debug o projeto pelo Visual Studio.
+
+8- Usuário: admin, Senha: admin
 
 # Autor
 
