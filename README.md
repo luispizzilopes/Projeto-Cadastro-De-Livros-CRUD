@@ -2,7 +2,7 @@
 
 # Sobre o projeto
 
-Esse é um simples projeto para Desktop desenvolvido na linguagem C# utilizando Windows Forms (.NET Framework) para realizar operações básicas de CRUD (Create, Read, Update e Delete) dos seus livros.
+Esse é um simples projeto para Desktop desenvolvido na linguagem C# utilizando Windows Forms (.NET Framework) com modelo de projeto MVC, para realizar operações básicas de CRUD (Create, Read, Update e Delete) dos seus livros.
 
 # Tecnologias utilizadas
 - C#
