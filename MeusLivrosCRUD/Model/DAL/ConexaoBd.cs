@@ -5,7 +5,7 @@ namespace MeusLivrosCRUD.Model.DAL
     internal class ConexaoBd
     {
         SqlConnection conexao = new SqlConnection();
-        private string StrSql = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=BdMeusLivros;Data Source=DESKTOP-CK95DQO\SQLEXPRESS01";
+        private string StrSql = File.ReadAllText("LocalBd.dll");
         public string? StrComando { get; set; }
         public ConexaoBd()
         {

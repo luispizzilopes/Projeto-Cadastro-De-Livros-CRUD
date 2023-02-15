@@ -46,6 +46,7 @@ namespace MeusLivrosCRUD.View
             txtBoxEditora.Text = "";
             txtBoxDataCadastro.Text = "";
             txtBoxData.Text = "";
+            txtBoxBuscar.Text = ""; 
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -72,10 +73,12 @@ namespace MeusLivrosCRUD.View
                 {
                     MessageBox.Show("Livro cadastrado com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    DesbloquearCampos(); 
+                    BloquearCampos(); 
                     LimparCampos();
-                    btnAdicionar.Enabled = true;
+                    btnAdicionar.Enabled = false;
                     btnBuscar.Enabled = true;
+                    btnNovo.Enabled = true;
+                    txtBoxBuscar.Enabled = true; 
                 }
                 else
                 {
@@ -93,7 +96,8 @@ namespace MeusLivrosCRUD.View
             ControllerBuscar controllerBuscar = new ControllerBuscar();
             if(controllerBuscar.Pesquisar(txtBoxBuscar.Text) != null)
             {
-                string[] campos = controllerBuscar.Pesquisar(txtBoxBuscar.Text); 
+                MessageBox.Show("Carregando as informações!", "Carregando...", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                string[] campos = controllerBuscar.Pesquisar(txtBoxBuscar.Text);
 
                 txtBoxNomelivro.Text = campos[0];
                 txtBoxData.Text = campos[1];
@@ -104,6 +108,7 @@ namespace MeusLivrosCRUD.View
                 DesbloquearCampos();
                 btnEditar.Enabled = true; 
                 btnExcluir.Enabled = true;
+                btnAdicionar.Enabled = false;
             }
             else
             {
@@ -121,6 +126,10 @@ namespace MeusLivrosCRUD.View
                     txtBoxEditora.Text, DateTime.Parse(txtBoxDataCadastro.Text), txtBoxObs.Text) == true)
                 {
                     MessageBox.Show("Alteração realizada com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnEditar.Enabled = false;
+                    btnExcluir.Enabled = false;
+                    LimparCampos();
+                    BloquearCampos(); 
                 }
                 else
                 {
@@ -142,13 +151,20 @@ namespace MeusLivrosCRUD.View
                 if(controllerExcluir.ExcluirRegistro(txtBoxBuscar.Text) == true)
                 {
                     MessageBox.Show("Registro excluido com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparCampos(); 
+                    LimparCampos();
+                    BloquearCampos();
+                    btnExcluir.Enabled = false; 
+                    btnEditar.Enabled = false;
                 }
                 else
                 {
                     MessageBox.Show("Não existe um livro cadastrado com esse nome!");
                 }
             }
+        }
+        private void lblFechar_Click(object sender, EventArgs e)
+        {
+            Application.Exit(); 
         }
     }
 }

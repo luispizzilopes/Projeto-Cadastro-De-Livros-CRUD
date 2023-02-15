@@ -1,4 +1,5 @@
 ﻿using MeusLivrosCRUD.Controller.Login;
+using MeusLivrosCRUD.Model.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,10 +41,18 @@ namespace MeusLivrosCRUD.View
                 MessageBox.Show("Informe todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
             }
         }
-
         private void lblFechar_Click(object sender, EventArgs e)
         {
             Application.Exit(); 
+        }
+
+        private void TelaLogin_Shown(object sender, EventArgs e)
+        {
+            if (!File.Exists("LocalBd.dll"))
+            {
+                MessageBox.Show("Não foi possível localizar o arquivo LocalBd.dll", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit(); 
+            }
         }
     }
 }

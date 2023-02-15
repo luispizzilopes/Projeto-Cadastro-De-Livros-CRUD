@@ -40,6 +40,7 @@
             this.pBoxImagem = new System.Windows.Forms.PictureBox();
             this.pBoxLogo = new System.Windows.Forms.PictureBox();
             this.lblFechar = new System.Windows.Forms.Label();
+            this.lblNome = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxLateral)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxImagem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxLogo)).BeginInit();
@@ -70,7 +71,7 @@
             this.btnAcessar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAcessar.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAcessar.ForeColor = System.Drawing.Color.White;
-            this.btnAcessar.Location = new System.Drawing.Point(529, 416);
+            this.btnAcessar.Location = new System.Drawing.Point(528, 406);
             this.btnAcessar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAcessar.Name = "btnAcessar";
             this.btnAcessar.Size = new System.Drawing.Size(125, 40);
@@ -116,7 +117,7 @@
             this.lblTelaLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(172)))), ((int)(((byte)(238)))));
             this.lblTelaLogin.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTelaLogin.ForeColor = System.Drawing.Color.White;
-            this.lblTelaLogin.Location = new System.Drawing.Point(148, 168);
+            this.lblTelaLogin.Location = new System.Drawing.Point(148, 206);
             this.lblTelaLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTelaLogin.Name = "lblTelaLogin";
             this.lblTelaLogin.Size = new System.Drawing.Size(114, 44);
@@ -129,7 +130,7 @@
             this.lblinferior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(172)))), ((int)(((byte)(238)))));
             this.lblinferior.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblinferior.ForeColor = System.Drawing.Color.White;
-            this.lblinferior.Location = new System.Drawing.Point(153, 218);
+            this.lblinferior.Location = new System.Drawing.Point(153, 256);
             this.lblinferior.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblinferior.Name = "lblinferior";
             this.lblinferior.Size = new System.Drawing.Size(206, 46);
@@ -152,7 +153,7 @@
             this.pBoxLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(172)))), ((int)(((byte)(238)))));
             this.pBoxLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pBoxLogo.BackgroundImage")));
             this.pBoxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pBoxLogo.Location = new System.Drawing.Point(20, 163);
+            this.pBoxLogo.Location = new System.Drawing.Point(20, 201);
             this.pBoxLogo.Name = "pBoxLogo";
             this.pBoxLogo.Size = new System.Drawing.Size(123, 115);
             this.pBoxLogo.TabIndex = 11;
@@ -171,12 +172,26 @@
             this.lblFechar.Text = "X";
             this.lblFechar.Click += new System.EventHandler(this.lblFechar_Click);
             // 
+            // lblNome
+            // 
+            this.lblNome.AutoSize = true;
+            this.lblNome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(172)))), ((int)(((byte)(238)))));
+            this.lblNome.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblNome.ForeColor = System.Drawing.Color.White;
+            this.lblNome.Location = new System.Drawing.Point(13, 48);
+            this.lblNome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNome.Name = "lblNome";
+            this.lblNome.Size = new System.Drawing.Size(332, 44);
+            this.lblNome.TabIndex = 13;
+            this.lblNome.Text = "Meus Livros CRUD";
+            // 
             // TelaLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(753, 511);
+            this.Controls.Add(this.lblNome);
             this.Controls.Add(this.lblFechar);
             this.Controls.Add(this.pBoxLogo);
             this.Controls.Add(this.pBoxImagem);
@@ -190,10 +205,12 @@
             this.Controls.Add(this.lblUsuario);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "TelaLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela Login";
+            this.Shown += new System.EventHandler(this.TelaLogin_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pBoxLateral)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxImagem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxLogo)).EndInit();
@@ -215,5 +232,6 @@
         private PictureBox pBoxImagem;
         private PictureBox pBoxLogo;
         private Label lblFechar;
+        private Label lblNome;
     }
 }
