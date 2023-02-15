@@ -18,14 +18,47 @@ namespace MeusLivrosCRUD.View
             InitializeComponent();
         }
 
-        private void btnNovo_Click(object sender, EventArgs e)
+        public void DesbloquearCampos()
         {
             txtBoxNomelivro.Enabled = true;
             txtBoxObs.Enabled = true;
             txtBoxNomeAutor.Enabled = true;
-            txtBoxEditora.Enabled = true;   
-            txtBoxDataCadastro.Enabled = true;  
+            txtBoxEditora.Enabled = true;
+            txtBoxDataCadastro.Enabled = true;
             txtBoxData.Enabled = true;
+        }
+
+        public void BloquearCampos()
+        {
+            txtBoxNomelivro.Enabled = false;
+            txtBoxObs.Enabled = false;
+            txtBoxNomeAutor.Enabled = false;
+            txtBoxEditora.Enabled = false;
+            txtBoxDataCadastro.Enabled = false;
+            txtBoxData.Enabled = false;
+        }
+
+        public void LimparCampos()
+        {
+            txtBoxNomelivro.Text = "";
+            txtBoxObs.Text = "";
+            txtBoxNomeAutor.Text = "";
+            txtBoxEditora.Text = "";
+            txtBoxDataCadastro.Text = "";
+            txtBoxData.Text = "";
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            DesbloquearCampos();
+            LimparCampos();
+
+            btnAdicionar.Enabled = true;
+            btnNovo.Enabled = false; 
+            btnEditar.Enabled = false;
+            btnBuscar.Enabled= false;
+            btnExcluir.Enabled = false;
+            txtBoxBuscar.Enabled = false; 
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -37,12 +70,65 @@ namespace MeusLivrosCRUD.View
                 if(controllerAdicionar.AdicionarLivro(txtBoxNomelivro.Text, DateTime.Parse(txtBoxData.Text), txtBoxNomeAutor.Text, 
                     txtBoxEditora.Text, DateTime.Parse(txtBoxDataCadastro.Text), txtBoxObs.Text) == true)
                 {
-                    MessageBox.Show("Livro cadastrado com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                    MessageBox.Show("Livro cadastrado com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    DesbloquearCampos(); 
+                    LimparCampos();
+                    btnAdicionar.Enabled = true;
+                    btnBuscar.Enabled = true;
                 }
                 else
                 {
                     MessageBox.Show("Não foi possível realizar o cadastro", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Preencha todos os campos para cadastrar um novo livro!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            ControllerBuscar controllerBuscar = new ControllerBuscar();
+            if(controllerBuscar.Pesquisar(txtBoxBuscar.Text) != null)
+            {
+                string[] campos = controllerBuscar.Pesquisar(txtBoxBuscar.Text); 
+
+                txtBoxNomelivro.Text = campos[0];
+                txtBoxData.Text = campos[1];
+                txtBoxNomeAutor.Text = campos[2];
+                txtBoxEditora.Text = campos[3];
+                txtBoxDataCadastro.Text = campos[4];
+                txtBoxObs.Text = campos[5];
+                DesbloquearCampos();
+                btnEditar.Enabled = true; 
+            }
+            else
+            {
+                MessageBox.Show("Não existe um livro cadastrado com esse nome!"); 
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            ControllerEditar controllerEditar = new ControllerEditar();
+            if (txtBoxNomelivro.Text != string.Empty && txtBoxData.Text != string.Empty && txtBoxDataCadastro.Text != string.Empty &&
+                txtBoxEditora.Text != string.Empty && txtBoxNomeAutor.Text != string.Empty && txtBoxObs.Text != string.Empty)
+            {
+                if (controllerEditar.EditarRegistro(txtBoxBuscar.Text, txtBoxNomelivro.Text, DateTime.Parse(txtBoxData.Text), txtBoxNomeAutor.Text,
+                    txtBoxEditora.Text, DateTime.Parse(txtBoxDataCadastro.Text), txtBoxObs.Text) == true)
+                {
+                    MessageBox.Show("Alteração realizada com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Não foi possível editar!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Preencha todos os campos para cadastrar um novo livro!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
     }

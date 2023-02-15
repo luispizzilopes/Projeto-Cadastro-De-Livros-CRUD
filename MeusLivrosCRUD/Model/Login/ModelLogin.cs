@@ -18,16 +18,18 @@ namespace MeusLivrosCRUD.Model.Login
             SqlCommand comandos = new SqlCommand(conexao.StrComando, conexao.Conectar());
             comandos.Parameters.Add("usuario", System.Data.SqlDbType.VarChar, 50).Value = usuario;
             comandos.Parameters.Add("senha", System.Data.SqlDbType.VarChar, 50).Value = senha;
-            SqlDataReader dataReader = comandos.ExecuteReader();
             try
             {
-                if(dataReader.HasRows == true)
+                using (SqlDataReader dataReader = comandos.ExecuteReader())
                 {
-                    return true; 
-                }
-                else
-                {
-                    return false;
+                    if (dataReader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
             catch (SqlException) 
@@ -42,17 +44,20 @@ namespace MeusLivrosCRUD.Model.Login
             conexao.StrComando = "select * from TabelaLogin where usuario = @usuario";
             SqlCommand comandos = new SqlCommand(conexao.StrComando, conexao.Conectar());
             comandos.Parameters.Add("usuario", System.Data.SqlDbType.VarChar, 50).Value = usuario;
-            SqlDataReader dataReader = comandos.ExecuteReader();
+            
             try
             {
-                if (dataReader.HasRows == true)
+                using (SqlDataReader dataReader = comandos.ExecuteReader())
                 {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                    if (dataReader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }    
             }
             catch (SqlException)
             {
