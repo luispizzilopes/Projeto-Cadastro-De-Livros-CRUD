@@ -40,5 +40,10 @@ namespace MeusLivrosCRUD.View
                 MessageBox.Show("Informe todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
             }
         }
+
+        private void lblFechar_Click(object sender, EventArgs e)
+        {
+            Application.Exit(); 
+        }
     }
 }

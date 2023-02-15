@@ -103,6 +103,7 @@ namespace MeusLivrosCRUD.View
                 txtBoxObs.Text = campos[5];
                 DesbloquearCampos();
                 btnEditar.Enabled = true; 
+                btnExcluir.Enabled = true;
             }
             else
             {
@@ -129,6 +130,24 @@ namespace MeusLivrosCRUD.View
             else
             {
                 MessageBox.Show("Preencha todos os campos para cadastrar um novo livro!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            ControllerExcluir controllerExcluir = new ControllerExcluir();
+            
+            if(txtBoxBuscar.Text != string.Empty)
+            {
+                if(controllerExcluir.ExcluirRegistro(txtBoxBuscar.Text) == true)
+                {
+                    MessageBox.Show("Registro excluido com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparCampos(); 
+                }
+                else
+                {
+                    MessageBox.Show("Não existe um livro cadastrado com esse nome!");
+                }
             }
         }
     }
