@@ -112,7 +112,7 @@ namespace MeusLivrosCRUD.View
             }
             else
             {
-                MessageBox.Show("Não existe um livro cadastrado com esse nome!"); 
+                MessageBox.Show("Não existe um livro cadastrado com esse nome!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information); 
             }
         }
 

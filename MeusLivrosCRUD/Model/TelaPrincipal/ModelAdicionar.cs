@@ -14,28 +14,60 @@ namespace MeusLivrosCRUD.Model.TelaPrincipal
 
         public bool AdicionarLivro(string nome, DateTime datalancamento, string nomeautor, string editora, DateTime datacadastro, string observacoes)
         {
-            conexao.StrComando = "insert into TabelaLivros values (@nome, @ano, @autor, @editora, @datacadastro, @obs)";
-            SqlCommand comandos = new SqlCommand(conexao.StrComando, conexao.Conectar());
-            comandos.Parameters.Add("nome", System.Data.SqlDbType.VarChar).Value = nome;
-            comandos.Parameters.Add("ano", System.Data.SqlDbType.Date).Value = datalancamento.ToString();
-            comandos.Parameters.Add("autor", System.Data.SqlDbType.VarChar).Value = nomeautor;
-            comandos.Parameters.Add("editora", System.Data.SqlDbType.VarChar).Value = editora;
-            comandos.Parameters.Add("datacadastro", System.Data.SqlDbType.Date).Value = datacadastro.ToString();
-            comandos.Parameters.Add("obs", System.Data.SqlDbType.VarChar).Value = observacoes;
-            try
+            if (ConsultarNome(nome) == true)
             {
-                comandos.ExecuteNonQuery();
-                return true; 
+                conexao.StrComando = "insert into TabelaLivros values (@nome, @ano, @autor, @editora, @datacadastro, @obs)";
+                SqlCommand comandos = new SqlCommand(conexao.StrComando, conexao.Conectar());
+                comandos.Parameters.Add("nome", System.Data.SqlDbType.VarChar).Value = nome;
+                comandos.Parameters.Add("ano", System.Data.SqlDbType.Date).Value = datalancamento.ToString();
+                comandos.Parameters.Add("autor", System.Data.SqlDbType.VarChar).Value = nomeautor;
+                comandos.Parameters.Add("editora", System.Data.SqlDbType.VarChar).Value = editora;
+                comandos.Parameters.Add("datacadastro", System.Data.SqlDbType.Date).Value = datacadastro.ToString();
+                comandos.Parameters.Add("obs", System.Data.SqlDbType.VarChar).Value = observacoes;
+                try
+                {
+                    comandos.ExecuteNonQuery();
+                    return true;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+                finally
+                {
+                    conexao.Desconectar();
+                }
             }
-            catch(SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
                 return false;
             }
-            finally
+        }
+
+        public bool ConsultarNome(string nome)
+        {
+            conexao.StrComando = "select * from TabelaLivros where nome = @nome"; 
+            SqlCommand comandos = new SqlCommand(conexao.StrComando, conexao.Conectar());
+            comandos.Parameters.Add("nome", System.Data.SqlDbType.VarChar).Value = nome;
+
+            try
             {
-                conexao.Desconectar(); 
+                SqlDataReader dataReader = comandos.ExecuteReader();
+                if(dataReader.HasRows != true)
+                {
+                    return true; 
+                }
+                else
+                {
+                    return false;
+                }
             }
+            catch(SqlException)
+            {
+                return false; 
+            }
+            finally { conexao.Desconectar(); }
         }
     }
 }
